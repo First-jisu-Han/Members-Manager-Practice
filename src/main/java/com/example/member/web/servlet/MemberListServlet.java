@@ -23,8 +23,6 @@ public class MemberListServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
 
         List<Member> members = memberRepository.findAll();
-
-
         PrintWriter w = response.getWriter();
         w.write("<html>");
         w.write("<head>");
