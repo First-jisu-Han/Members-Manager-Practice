@@ -7,15 +7,15 @@ import lombok.Setter;
 @Setter
 public class Member {
     private long id;
-    private String userName;
+    private String username;
     private int age;
 
     public Member(){
 
     }
     // 생성자
-    public Member(String userName,int age) {
-        this.userName=userName;
+    public Member(String username,int age) {
+        this.username=username;
         this.age=age;
     }
 

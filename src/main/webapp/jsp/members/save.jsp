@@ -26,7 +26,7 @@ JSP도 나중에 자동으로 서블릿으로 자동변환된다.
 회원 저장 성공
 <ul>
     <li>id=<%=member.getId()%></li>
-    <li>username=<%=member.getUserName()%></li>
+    <li>username=<%=member.getUsername()%></li>
     <li>age=<%=member.getAge()%></li>
 </ul>
 <a href="/index.html">홈으로</a>
