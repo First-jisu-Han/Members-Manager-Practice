@@ -12,9 +12,10 @@ import java.io.IOException;
 
 public class MemberSaveControllerV2 implements ControllerV2 {
 
+    MemberRepository memberRepository=MemberRepository.getInstance();
+
     @Override
     public MyView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        MemberRepository memberRepository=MemberRepository.getInstance();
 
             String username=request.getParameter("username");
             int age=Integer.parseInt(request.getParameter("age"));

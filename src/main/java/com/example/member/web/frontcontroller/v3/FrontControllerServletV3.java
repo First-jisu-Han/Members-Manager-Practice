@@ -42,25 +42,27 @@ public class FrontControllerServletV3 extends HttpServlet {
         request.getParameterNames().asIterator()
                 .forEachRemaining(paramName-> paramMap.put(paramName,request.getParameter(paramName)));
          */
-        Map<String, String> paramMap = createParamMap(request);
+        Map<String, String> paramMap = createParamMap(request);   // HttpServletRequest에 있는 모든 parameter를 뽑아서 저장
 
         ModelView mv=controller.process(paramMap); // 해당 컨트롤러의 로직을 실행
 
         String viewName=mv.getViewName();  //논리이름인 new-form 같은 것들이 저장됨
         //"WEB-INF/views/ ..." 호출될 것이다.
-        MyView view= viewResolver(viewName);
+        MyView view= viewResolver(viewName);  // viewResolver 에서 url에 대한 처리를 해준다. 논리이름만 viewName에 넣어주면, 전체 url을 붙여서 view에 넘겨준다.
 
-        view.render(mv.getModel(),request,response);
+        view.render(mv.getModel(),request,response); // render 호출하면서 model을 넘겨줌
 
     }
 
+
+    // HttpServletRequest에 있는 모든 parameter를 뽑아서 저장
     private Map<String, String> createParamMap(HttpServletRequest request) {
         Map<String,String> paramMap= new HashMap<>();
         request.getParameterNames().asIterator()
                 .forEachRemaining(paramName-> paramMap.put(paramName, request.getParameter(paramName)));
         return paramMap;
     }
-
+    // viewResolver 에서 url에 대한 처리를 해준다. 논리이름만 viewName에 넣어주면, 전체 url을 붙여서 view에 넘겨준다.
     private MyView viewResolver(String viewName){
         return new MyView("/WEB-INF/views/"+ viewName + ".jsp");
     }
