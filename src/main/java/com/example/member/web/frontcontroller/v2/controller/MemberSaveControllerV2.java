@@ -5,7 +5,6 @@ import com.example.member.domain.MemberRepository;
 import com.example.member.web.frontcontroller.MyView;
 import com.example.member.web.frontcontroller.v2.ControllerV2;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
