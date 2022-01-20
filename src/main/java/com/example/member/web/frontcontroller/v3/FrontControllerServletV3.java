@@ -36,7 +36,6 @@ public class FrontControllerServletV3 extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);  // 해당하는 uri 가 없다면 404에러 발생시킴
             return;
         }
-
         /*
         Map<String,String> paramMap= new HashMap<>();
         request.getParameterNames().asIterator()
@@ -51,10 +50,7 @@ public class FrontControllerServletV3 extends HttpServlet {
         MyView view= viewResolver(viewName);  // viewResolver 에서 url에 대한 처리를 해준다. 논리이름만 viewName에 넣어주면, 전체 url을 붙여서 view에 넘겨준다.
 
         view.render(mv.getModel(),request,response); // render 호출하면서 model을 넘겨줌
-
     }
-
-
     // HttpServletRequest에 있는 모든 parameter를 뽑아서 저장
     private Map<String, String> createParamMap(HttpServletRequest request) {
         Map<String,String> paramMap= new HashMap<>();
