@@ -17,15 +17,13 @@ public class SpringMemberControllerV3 {
     private MemberRepository memberRepository=MemberRepository.getInstance();
 
 
-    @GetMapping  // 요청 메세지가 GET 인경우만 받겠다. @RequestMapping(method = RequestMethod.GET) 를 간편화
-    @RequestMapping(value = "/new-form") // 요청 메서드가 GET인경우만 받겠다를 의미
+    @GetMapping("new-form")  // 요청 메세지가 GET 인경우만 받겠다. @RequestMapping(value = "/new-form",method = RequestMethod.GET) 를 간편화
     public String newForm(){
         return "new-form";   // jsp 포워딩 가능, render()
     }
 
 
-    @PostMapping // 요청메세지가 POST 인 경우만 받겠다. @RequestMapping(method = RequestMethod.POST) 를 간편화
-    @RequestMapping(value = "/save")
+    @PostMapping("/save") // 요청메세지가 POST 인 경우만 받겠다. @RequestMapping(value = "/save",method = RequestMethod.POST) 를 간편화
     public String save(@RequestParam("username") String username,
                              @RequestParam("age") int age,
                              Model model // 모델에 데이터담기
@@ -38,8 +36,7 @@ public class SpringMemberControllerV3 {
         return "save-result";
     }
 
-    @GetMapping   // 요청 메세지가 GET인경우만 받겠다. @RequestMapping(method = RequestMethod.GET) 를 간편화
-    @RequestMapping
+    @GetMapping  // 요청 메세지가 GET인경우만 받겠다. @RequestMapping(method = RequestMethod.GET) 를 간편화
     public String members(Model model){
         List<Member> members=memberRepository.findAll();
         model.addAttribute("members",members);
