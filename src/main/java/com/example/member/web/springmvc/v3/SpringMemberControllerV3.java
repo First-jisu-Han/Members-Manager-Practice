@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/springmvc/v2/members")  // @requestMapping에서 중복되는 코드 앞부분 통합
+@RequestMapping(value = "/springmvc/v3/members")  // @requestMapping에서 중복되는 코드 앞부분 통합
 public class SpringMemberControllerV3 {
     private MemberRepository memberRepository=MemberRepository.getInstance();
 
 
-    @GetMapping("new-form")  // 요청 메세지가 GET 인경우만 받겠다. @RequestMapping(value = "/new-form",method = RequestMethod.GET) 를 간편화
+    @GetMapping("/new-form")  // 요청 메세지가 GET 인경우만 받겠다. @RequestMapping(value = "/new-form",method = RequestMethod.GET) 를 간편화
     public String newForm(){
         return "new-form";   // jsp 포워딩 가능, render()
     }
