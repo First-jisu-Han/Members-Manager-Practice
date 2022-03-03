@@ -2,8 +2,6 @@ package com.example.member.web.servlet;
 
 import com.example.member.domain.Member;
 import com.example.member.domain.MemberRepository;
-import org.springframework.format.Printer;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +19,7 @@ public class MemberSaveServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println(" MemberSaveServlet.service");
         String username=request.getParameter("username");
-        int age=Integer.parseInt(request.getParameter("age"));
+        int age=Integer.parseInt(request.getParameter("age")); // String 타입으로 받기때문에 int 로 변경해주어야함
 
         Member member=new Member(username,age);
         memberRepository.save(member);

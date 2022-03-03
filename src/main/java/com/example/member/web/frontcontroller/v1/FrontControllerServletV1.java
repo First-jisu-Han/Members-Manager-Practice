@@ -18,9 +18,9 @@ import java.util.Map;
 public class FrontControllerServletV1 extends HttpServlet {
 
     private Map<String,ControllerV1> controllerMap=new HashMap<>();   // URL 매핑정보를 담은 MAP , 이를 통해서 특정 요청에 대한 매핑되는 특정 컨트롤러를 호출가능
-
-    public FrontControllerServletV1(){
-        controllerMap.put("/front-controller/v1/members/new-form", new MemberFormControllerV1());
+    // 다형성의 사용
+        public FrontControllerServletV1(){
+            controllerMap.put("/front-controller/v1/membe rs/new-form", new MemberFormControllerV1());
         controllerMap.put("/front-controller/v1/members/save", new MemberSaveControllerV1());
         controllerMap.put("/front-controller/v1/members", new MemberListControllerV1());
     }

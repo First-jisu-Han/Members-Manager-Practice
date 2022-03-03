@@ -2,6 +2,7 @@ package com.example.member.web.springmvc.v3;
 
 import com.example.member.domain.Member;
 import com.example.member.domain.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,8 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/springmvc/v3/members")  // @requestMapping에서 중복되는 코드 앞부분 통합
 public class SpringMemberControllerV3 {
-    private MemberRepository memberRepository=MemberRepository.getInstance();
 
+    private MemberRepository memberRepository=MemberRepository.getInstance(); // 싱글톤 패턴
 
     @GetMapping("/new-form")  // 요청 메세지가 GET 인경우만 받겠다. @RequestMapping(value = "/new-form",method = RequestMethod.GET) 를 간편화
     public String newForm(){
@@ -35,7 +36,6 @@ public class SpringMemberControllerV3 {
         model.addAttribute("member",member);
         return "save-result";
     }
-
     @GetMapping  // 요청 메세지가 GET인경우만 받겠다. @RequestMapping(method = RequestMethod.GET) 를 간편화
     public String members(Model model){
         List<Member> members=memberRepository.findAll();

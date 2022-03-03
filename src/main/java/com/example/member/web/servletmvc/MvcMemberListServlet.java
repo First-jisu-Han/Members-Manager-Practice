@@ -17,8 +17,7 @@ public class MvcMemberListServlet extends HttpServlet {
     MemberRepository memberRepository = MemberRepository.getInstance();
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Member> members=memberRepository.findAll();
-
+        List<Member> members= memberRepository.findAll();
         request.setAttribute("members",members); // key , value - Model에 담아줌.
 
         String viewPath="/WEB-INF/views/members.jsp";
