@@ -28,6 +28,7 @@ public class SpringMemberControllerV2 {
         mv.addObject("members", members);
         return mv;
     }
+
     @RequestMapping("/save")
     public ModelAndView save(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");

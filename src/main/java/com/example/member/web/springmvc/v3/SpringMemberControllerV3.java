@@ -23,6 +23,12 @@ public class SpringMemberControllerV3 {
         return "new-form";   // jsp 포워딩 가능, render()
     }
 
+    @GetMapping  // 요청 메세지가 GET인경우만 받겠다. @RequestMapping(method = RequestMethod.GET) 를 간편화
+    public String members(Model model){
+        List<Member> members=memberRepository.findAll();
+        model.addAttribute("members",members);
+        return "members";
+    }
 
     @PostMapping("/save") // 요청메세지가 POST 인 경우만 받겠다. @RequestMapping(value = "/save",method = RequestMethod.POST) 를 간편화
     public String save(@RequestParam("username") String username,
@@ -36,12 +42,7 @@ public class SpringMemberControllerV3 {
         model.addAttribute("member",member);
         return "save-result";
     }
-    @GetMapping  // 요청 메세지가 GET인경우만 받겠다. @RequestMapping(method = RequestMethod.GET) 를 간편화
-    public String members(Model model){
-        List<Member> members=memberRepository.findAll();
-        model.addAttribute("members",members);
-        return "members";
-    }
+
 
 
 }
